@@ -55,7 +55,7 @@ let Users = (_dec = (0, _typeorm.Entity)("users"), _dec2 = (0, _typeorm.PrimaryG
   }
 
   getAvatarUrl() {
-    return `${process.env.APP_STORAGE_URL}/files/${this.avatar_url}`;
+    return this.avatar_url ? `${process.env.APP_STORAGE_URL}/files/${this.avatar_url}` : "";
   }
 
 }, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "id", [_dec2, _dec3], {
