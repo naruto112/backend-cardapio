@@ -43,7 +43,7 @@ class CreateUsers1597521497106 {
         isNullable: false
       }, {
         name: "cep",
-        type: "numeric(30)",
+        type: "varchar(30)",
         isNullable: false
       }, {
         name: "address",
