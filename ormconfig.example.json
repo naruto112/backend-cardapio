@@ -1,0 +1,14 @@
+{
+  "name": "default",
+  "type": "mysql",
+  "host": "162.214.127.97",
+  "port": 3306,
+  "username": "dstudium_cardapio_system",
+  "password": "LEVHXD]9NBa&",
+  "database": "dstudium_cardapiodigital",
+  "entities": ["./dist/modules/**/entities/*.js"],
+  "migrations": ["./dist/database/migrations/*.js"],
+  "cli": {
+    "migrationsDir": "./dist/database/migrations"
+  }
+}
