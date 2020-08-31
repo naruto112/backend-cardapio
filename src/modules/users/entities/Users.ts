@@ -61,7 +61,9 @@ class Users {
 
   @Expose({ name: "avatar_url" })
   getAvatarUrl(): string {
-    return `${process.env.APP_STORAGE_URL}/files/${this.avatar_url}`;
+    return this.avatar_url
+      ? `${process.env.APP_STORAGE_URL}/files/${this.avatar_url}`
+      : "";
   }
 }
 
