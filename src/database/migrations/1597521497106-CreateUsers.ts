@@ -45,7 +45,7 @@ export class CreateUsers1597521497106 implements MigrationInterface {
           },
           {
             name: "cep",
-            type: "numeric(30)",
+            type: "varchar(30)",
             isNullable: false,
           },
           {
