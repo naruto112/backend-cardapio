@@ -30,6 +30,7 @@ class ProfileController {
       address,
       number,
       complement,
+      shop,
     } = request.body;
     const user_id = request.user.id;
 
@@ -46,6 +47,7 @@ class ProfileController {
       address,
       number,
       complement,
+      shop,
     });
 
     return response.json(classToClass(user));

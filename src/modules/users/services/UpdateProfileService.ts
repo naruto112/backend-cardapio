@@ -16,6 +16,7 @@ interface IRequest {
   address: string;
   number: string;
   complement: string;
+  shop: string;
 }
 
 class UpdateProfileService {
@@ -32,6 +33,7 @@ class UpdateProfileService {
     address,
     number,
     complement,
+    shop,
   }: IRequest): Promise<Users> {
     const usersRepository = new UsersRepository();
     const hashProvider = new BCryptHashprovider();
@@ -57,6 +59,7 @@ class UpdateProfileService {
     user.address = address;
     user.number = number;
     user.complement = complement;
+    user.shop = shop;
 
     if (password && old_password) {
       const checkOldPassword = await hashProvider.compareHash(

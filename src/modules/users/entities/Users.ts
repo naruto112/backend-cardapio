@@ -59,6 +59,9 @@ class Users {
   @Column()
   avatar_url: string;
 
+  @Column()
+  shop: string;
+
   @Expose({ name: "avatar_url" })
   getAvatarUrl(): string {
     return this.avatar_url
