@@ -26,7 +26,8 @@ class UpdateProfileService {
     cep,
     address,
     number,
-    complement
+    complement,
+    shop
   }) {
     const usersRepository = new _UsersRepository.default();
     const hashProvider = new _BCryptHashProvider.default();
@@ -51,6 +52,7 @@ class UpdateProfileService {
     user.address = address;
     user.number = number;
     user.complement = complement;
+    user.shop = shop;
 
     if (password && old_password) {
       const checkOldPassword = await hashProvider.compareHash(old_password, user.password);

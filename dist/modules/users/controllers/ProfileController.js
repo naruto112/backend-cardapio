@@ -36,7 +36,8 @@ class ProfileController {
       cep,
       address,
       number,
-      complement
+      complement,
+      shop
     } = request.body;
     const user_id = request.user.id;
     const user = await updateProfileService.execute({
@@ -51,7 +52,8 @@ class ProfileController {
       cep,
       address,
       number,
-      complement
+      complement,
+      shop
     });
     return response.json((0, _classTransformer.classToClass)(user));
   }
