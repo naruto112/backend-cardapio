@@ -1,11 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export default class CreateUserTokens1595292747304
-  implements MigrationInterface {
+export class CreateMenu1601389864846 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "user_tokens",
+        name: "menu",
         columns: [
           {
             name: "id",
@@ -14,14 +13,23 @@ export default class CreateUserTokens1595292747304
             generationStrategy: "uuid",
           },
           {
-            name: "token",
+            name: "owner",
             type: "varchar",
-            generationStrategy: "uuid",
+            isNullable: false,
           },
           {
-            name: "user_id",
-            type: "varchar(36)",
-            isNullable: true,
+            name: "name",
+            type: "varchar(50)",
+            isNullable: false,
+          },
+          {
+            name: "sequence",
+            type: "INT(19)",
+            isNullable: false,
+          },
+          {
+            name: "visible",
+            type: "INT(2)",
           },
           {
             name: "created_at",
@@ -39,6 +47,6 @@ export default class CreateUserTokens1595292747304
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("user_tokens");
+    await queryRunner.dropTable("menu");
   }
 }

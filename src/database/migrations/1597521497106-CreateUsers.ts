@@ -34,6 +34,11 @@ export class CreateUsers1597521497106 implements MigrationInterface {
             isNullable: false,
           },
           {
+            name: "phone",
+            type: "varchar",
+            isNullable: false,
+          },
+          {
             name: "city",
             type: "varchar(80)",
             isNullable: false,
@@ -61,6 +66,16 @@ export class CreateUsers1597521497106 implements MigrationInterface {
           {
             name: "complement",
             type: "varchar(80)",
+            isNullable: false,
+          },
+          {
+            name: "neighborhood",
+            type: "varchar",
+            isNullable: false,
+          },
+          {
+            name: "shop",
+            type: "varchar",
             isNullable: false,
           },
           {
