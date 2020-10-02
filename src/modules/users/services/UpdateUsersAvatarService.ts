@@ -1,4 +1,4 @@
-import Users from "../entities/Users";
+import Users from "../entities/User";
 import UsersRepository from "../repositories/UsersRepository";
 import path from "path";
 import fs from "fs";

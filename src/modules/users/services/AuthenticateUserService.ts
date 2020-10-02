@@ -4,7 +4,7 @@ import AppError from "../../../errors/AppError";
 import BCryptHashProvider from "../providers/BCryptHashProvider";
 import authConfig from "../../../config/auth";
 
-import Users from "../entities/Users";
+import Users from "../entities/User";
 
 interface IRequest {
   email: string;

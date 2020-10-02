@@ -37,12 +37,16 @@ export class CreateProducts1601391101984 implements MigrationInterface {
             type: "int(100)",
           },
           {
-            name: "category_id",
+            name: "visible",
+            type: "INT(2)",
+          },
+          {
+            name: "menu_id",
             type: "varchar(36)",
             isNullable: true,
           },
           {
-            name: "menu_id",
+            name: "category_id",
             type: "varchar(36)",
             isNullable: true,
           },

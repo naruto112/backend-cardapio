@@ -1,7 +1,7 @@
 import { Repository, getRepository } from "typeorm";
 import Menu from "../entities/Menu";
 
-interface ICreateMenu {
+interface IMenu {
   id?: string;
   owner?: string;
   name: string;
@@ -16,7 +16,7 @@ class MenuRepository {
     this.ormRepository = getRepository(Menu);
   }
 
-  public async create(menuData: ICreateMenu): Promise<Menu> {
+  public async create(menuData: IMenu): Promise<Menu> {
     const menu = this.ormRepository.create(menuData);
 
     await this.ormRepository.save(menu);
@@ -36,7 +36,7 @@ class MenuRepository {
     return menu;
   }
 
-  public async save(menuData: ICreateMenu): Promise<Menu> {
+  public async save(menuData: IMenu): Promise<Menu> {
     return this.ormRepository.save(menuData);
   }
 }

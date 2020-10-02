@@ -2,7 +2,7 @@ import UsersRepository from "../repositories/UsersRepository";
 import AppError from "../../../errors/AppError";
 import BCryptHashProvider from "../providers/BCryptHashProvider";
 
-import Users from "../entities/Users";
+import Users from "../entities/User";
 
 interface IRequest {
   email: string;

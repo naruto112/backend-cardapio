@@ -1,5 +1,5 @@
 import { Repository, getRepository } from "typeorm";
-import Users from "../entities/Users";
+import Users from "../entities/User";
 
 interface ICreateUser {
   email: string;

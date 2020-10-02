@@ -1,4 +1,4 @@
-import Users from "../entities/Users";
+import Users from "../entities/User";
 import UsersRepository from "../repositories/UsersRepository";
 import BCryptHashprovider from "../providers/BCryptHashProvider";
 import AppError from "../../../errors/AppError";

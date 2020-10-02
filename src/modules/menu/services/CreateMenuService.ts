@@ -20,7 +20,7 @@ class CreateMenuService {
     const menuRepository = new MenuRepository();
 
     if (!owner) {
-      throw (new AppError("Owner queried"), 401);
+      throw (new AppError("Owner mandatory"), 401);
     }
 
     const menu = await menuRepository.create({

@@ -4,7 +4,7 @@ import UsersTokensRepository from "../repositories/UsersTokensRepository";
 import AppError from "../../../errors/AppError";
 import MailProvider from "../providers/MailProvider";
 
-import Users from "../entities/Users";
+import Users from "../entities/User";
 
 interface IRequest {
   email: string;
