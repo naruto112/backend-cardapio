@@ -11,6 +11,7 @@ menuRouter.use(ensureAuthenticated);
 menuRouter.get("/", menuController.show);
 menuRouter.post("/", menuController.create);
 menuRouter.put("/", menuController.update);
+menuRouter.put("/sequence", menuController.sequence);
 menuRouter.delete("/", menuController.delete);
 
 export default menuRouter;

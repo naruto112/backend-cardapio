@@ -10,6 +10,7 @@ import {
 
 import Menu from "../../menu/entities/Menu";
 import Category from "../../categories/entities/Category";
+import Aditional from "../../aditionals/entities/Aditional";
 
 @Entity("products")
 class Products {
@@ -44,8 +45,16 @@ class Products {
   @Column()
   category_id: string;
 
+  @ManyToOne(() => Category)
   @JoinColumn({ name: "category_id" })
   category: Category;
+
+  @Column()
+  aditional_id: string;
+
+  @ManyToOne(() => Aditional)
+  @JoinColumn({ name: "aditional_id" })
+  aditional: Aditional;
 
   @UpdateDateColumn()
   created_at: Date;

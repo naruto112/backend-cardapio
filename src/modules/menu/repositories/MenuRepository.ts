@@ -1,5 +1,6 @@
 import { Repository, getRepository } from "typeorm";
 import Menu from "../entities/Menu";
+import Product from "../../products/entities/Product";
 
 interface IMenu {
   id?: string;
@@ -24,9 +25,20 @@ class MenuRepository {
     return menu;
   }
 
+  public async executeSequence(): Promise<IMenu> {
+    const sequence = await this.ormRepository
+      .createQueryBuilder("menu")
+      .select("max(sequence + 1)", "sequence")
+      .getRawOne();
+
+    return sequence;
+  }
+
   public async findByOwner(owner: string): Promise<Menu[]> {
     const menus = await this.ormRepository.find({
+      relations: ["products"],
       where: { owner },
+      order: { sequence: "ASC" },
     });
     return menus;
   }

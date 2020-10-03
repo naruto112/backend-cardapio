@@ -10,6 +10,8 @@ interface IProducts {
   stock?: number;
   visible: number;
   menu_id: string;
+  category_id: string;
+  aditional_id: string;
 }
 
 class ProductsRepository {

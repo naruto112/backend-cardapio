@@ -12,6 +12,8 @@ interface IRequest {
   stock?: number;
   visible: number;
   menu_id: string;
+  category_id: string;
+  aditional_id: string;
 }
 
 class CreateProductsService {
@@ -23,6 +25,8 @@ class CreateProductsService {
     stock,
     visible,
     menu_id,
+    category_id,
+    aditional_id,
   }: IRequest): Promise<Products> {
     const productRepository = new ProductsRepository();
 
@@ -38,6 +42,8 @@ class CreateProductsService {
       stock,
       visible,
       menu_id,
+      category_id,
+      aditional_id,
     });
 
     return product;

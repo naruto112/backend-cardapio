@@ -4,7 +4,13 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
 } from "typeorm";
+
+import Product from "../../products/entities/Product";
 
 @Entity("menu")
 class Menu {
@@ -22,6 +28,14 @@ class Menu {
 
   @Column()
   visible: number;
+
+  @ManyToMany(() => Product)
+  @JoinTable({
+    name: "products",
+    joinColumns: [{ name: "menu_id" }],
+    inverseJoinColumns: [{ name: "id" }],
+  })
+  products: Product[];
 
   @UpdateDateColumn()
   created_at: Date;

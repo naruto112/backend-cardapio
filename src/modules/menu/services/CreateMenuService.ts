@@ -6,27 +6,24 @@ import Menu from "../entities/Menu";
 interface IRequest {
   owner: string;
   name: string;
-  sequence: number;
+  sequence?: number;
   visible: number;
 }
 
 class CreateMenuService {
-  public async execute({
-    owner,
-    name,
-    sequence,
-    visible,
-  }: IRequest): Promise<Menu> {
+  public async execute({ owner, name, visible }: IRequest): Promise<Menu> {
     const menuRepository = new MenuRepository();
 
     if (!owner) {
       throw (new AppError("Owner mandatory"), 401);
     }
 
+    const { sequence } = await menuRepository.executeSequence();
+
     const menu = await menuRepository.create({
       owner,
       name,
-      sequence,
+      sequence: !sequence ? 0 : sequence,
       visible,
     });
 

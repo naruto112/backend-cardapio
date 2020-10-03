@@ -8,7 +8,16 @@ export default class ProductsController {
   public async create(request: Request, response: Response): Promise<Response> {
     const createProductService = new CreateProductsService();
     const owner = request.user.id;
-    const { name, price, description, stock, visible, menu_id } = request.body;
+    const {
+      name,
+      price,
+      description,
+      stock,
+      visible,
+      menu_id,
+      category_id,
+      aditional_id,
+    } = request.body;
 
     const product = await createProductService.create({
       owner,
@@ -18,6 +27,8 @@ export default class ProductsController {
       stock,
       visible,
       menu_id,
+      category_id,
+      aditional_id,
     });
 
     return response.json(product);
