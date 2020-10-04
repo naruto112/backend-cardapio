@@ -43,6 +43,15 @@ class MenuRepository {
     return menus;
   }
 
+  public async findByProduct(id: string): Promise<Menu[]> {
+    const menus = await this.ormRepository.find({
+      relations: ["products"],
+      where: { id },
+      order: { sequence: "ASC" },
+    });
+    return menus;
+  }
+
   public async findById(id: string): Promise<Menu | undefined> {
     const menu = this.ormRepository.findOne(id);
     return menu;

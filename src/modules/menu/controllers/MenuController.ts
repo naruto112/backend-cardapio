@@ -4,6 +4,7 @@ import UpdateMenuService from "../services/UpdateMenuService";
 import ShowMenuService from "../services/ShowMenuService";
 import DisabledMenuService from "../services/DisabledMenuService";
 import ChangeSequenceMenuService from "../services/ChangeSequenceMenuService";
+import ParamsMenuService from "../services/ParamsMenuService";
 
 export default class MenuController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -26,6 +27,15 @@ export default class MenuController {
     const menus = await showMenuService.execute({ owner });
 
     return response.json(menus);
+  }
+
+  public async params(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const paramsMenuService = new ParamsMenuService();
+    const menu = await paramsMenuService.execute({ id });
+
+    return response.json(menu);
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
