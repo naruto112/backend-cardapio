@@ -9,6 +9,7 @@ const menuController = new MenuController();
 menuRouter.use(ensureAuthenticated);
 
 menuRouter.get("/", menuController.show);
+menuRouter.get("/:id", menuController.params);
 menuRouter.post("/", menuController.create);
 menuRouter.put("/", menuController.update);
 menuRouter.put("/sequence", menuController.sequence);
