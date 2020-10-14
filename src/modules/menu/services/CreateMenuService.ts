@@ -11,7 +11,7 @@ interface IRequest {
 }
 
 class CreateMenuService {
-  public async execute({ owner, name, visible }: IRequest): Promise<Menu> {
+  public async execute({ owner, name, visible }: IRequest): Promise<Menu[]> {
     const menuRepository = new MenuRepository();
 
     if (!owner) {
@@ -20,12 +20,14 @@ class CreateMenuService {
 
     const { sequence } = await menuRepository.executeSequence();
 
-    const menu = await menuRepository.create({
+    const menuCreate = await menuRepository.create({
       owner,
       name,
       sequence: !sequence ? 0 : sequence,
       visible,
     });
+
+    const menu = await menuRepository.findByProduct(menuCreate.id);
 
     return menu;
   }

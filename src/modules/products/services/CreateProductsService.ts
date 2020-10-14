@@ -3,6 +3,10 @@ import AppError from "../../../errors/AppError";
 
 import Products from "../entities/Product";
 
+interface IAditionals {
+  id: string;
+}
+
 interface IRequest {
   id?: string;
   owner: string;
@@ -13,7 +17,7 @@ interface IRequest {
   visible: number;
   menu_id: string;
   category_id: string;
-  aditional_id: string;
+  aditionals: IAditionals[];
 }
 
 class CreateProductsService {
@@ -26,12 +30,16 @@ class CreateProductsService {
     visible,
     menu_id,
     category_id,
-    aditional_id,
+    aditionals,
   }: IRequest): Promise<Products> {
     const productRepository = new ProductsRepository();
 
     if (!owner) {
       throw new AppError("Owner mandatory", 401);
+    }
+
+    if (!aditionals) {
+      throw new AppError("Aditionals mandatory", 401);
     }
 
     const product = productRepository.create({
@@ -43,7 +51,7 @@ class CreateProductsService {
       visible,
       menu_id,
       category_id,
-      aditional_id,
+      aditionals,
     });
 
     return product;

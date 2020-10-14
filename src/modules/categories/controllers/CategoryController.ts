@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import CreateCategoriesService from "../services/CreateCategoriesService";
 import ShowCategoriesService from "../services/ShowCategoriesService";
 import UpdateCategoriesService from "../services/UpdateCategoriesService";
+import { classToClass } from "class-transformer";
 
 export default class CategoryController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -27,7 +28,7 @@ export default class CategoryController {
       owner,
     });
 
-    return response.json(category);
+    return response.json(classToClass(category));
   }
 
   public async update(request: Request, response: Response): Promise<Response> {

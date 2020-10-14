@@ -8,6 +8,7 @@ import menuRouter from "../modules/menu/routes/menu.routes";
 import productsRouter from "../modules/products/routes/products.routes";
 import categoriesRouter from "../modules/categories/routes/categories.routes";
 import aditionalsRouter from "../modules/aditionals/routes/aditionals.routes";
+import attachmentsRouter from "../modules/attachaments/routes/attachments.routes";
 
 const routes = Router();
 
@@ -19,5 +20,6 @@ routes.use("/menu", menuRouter);
 routes.use("/products", productsRouter);
 routes.use("/categories", categoriesRouter);
 routes.use("/aditionals", aditionalsRouter);
+routes.use("/attachments", attachmentsRouter);
 
 export default routes;

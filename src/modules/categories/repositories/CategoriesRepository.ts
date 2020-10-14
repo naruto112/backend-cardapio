@@ -25,6 +25,7 @@ class CategoriesRepository {
   public async findByOwner(owner: string): Promise<Category[]> {
     const menus = await this.ormRepository.find({
       where: { owner },
+      relations: ["attachment"],
     });
     return menus;
   }

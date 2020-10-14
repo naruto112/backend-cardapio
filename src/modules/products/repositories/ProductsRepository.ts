@@ -1,6 +1,10 @@
 import { Repository, getRepository } from "typeorm";
 import Products from "../entities/Product";
 
+interface IAditionals {
+  id: string;
+}
+
 interface IProducts {
   id?: string;
   owner: string;
@@ -11,7 +15,7 @@ interface IProducts {
   visible: number;
   menu_id: string;
   category_id: string;
-  aditional_id: string;
+  aditionals: IAditionals[];
 }
 
 class ProductsRepository {
@@ -32,13 +36,25 @@ class ProductsRepository {
   public async findByOwner(owner: string): Promise<Products[]> {
     const menus = await this.ormRepository.find({
       where: { owner },
+      relations: ["attachment"],
     });
     return menus;
   }
 
   public async findById(id: string): Promise<Products | undefined> {
-    const menu = this.ormRepository.findOne(id);
-    return menu;
+    const product = this.ormRepository.findOne({
+      where: { id },
+      relations: ["category", "aditionals", "attachment"],
+    });
+    return product;
+  }
+
+  public async findByIdMenu(id: string): Promise<Products[] | undefined> {
+    const product = this.ormRepository.find({
+      where: { menu_id: id },
+      relations: ["category", "aditionals", "attachment"],
+    });
+    return product;
   }
 
   public async save(menuData: IProducts): Promise<Products> {
