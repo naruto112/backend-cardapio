@@ -2,9 +2,13 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
+
+import Attachment from "../../attachaments/entities/Attachments";
 
 @Entity("categories")
 class Category {
@@ -16,6 +20,14 @@ class Category {
 
   @Column()
   name: string;
+
+  @ManyToMany(() => Attachment)
+  @JoinTable({
+    name: "attachments",
+    joinColumns: [{ name: "category_id" }],
+    inverseJoinColumns: [{ name: "id" }],
+  })
+  attachment: Attachment;
 
   @UpdateDateColumn()
   created_at: Date;

@@ -51,11 +51,6 @@ export class CreateProducts1601391101984 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: "aditional_id",
-            type: "varchar(36)",
-            isNullable: true,
-          },
-          {
             name: "created_at",
             type: "timestamp",
             default: "now()",

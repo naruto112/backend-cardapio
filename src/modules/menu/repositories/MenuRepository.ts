@@ -1,6 +1,5 @@
 import { Repository, getRepository } from "typeorm";
 import Menu from "../entities/Menu";
-import Product from "../../products/entities/Product";
 
 interface IMenu {
   id?: string;

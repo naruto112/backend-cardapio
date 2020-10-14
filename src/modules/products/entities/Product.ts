@@ -5,12 +5,16 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  ManyToMany,
   JoinColumn,
+  JoinTable,
+  OneToMany,
 } from "typeorm";
 
 import Menu from "../../menu/entities/Menu";
 import Category from "../../categories/entities/Category";
 import Aditional from "../../aditionals/entities/Aditional";
+import Attachment from "../../attachaments/entities/Attachments";
 
 @Entity("products")
 class Products {
@@ -49,12 +53,21 @@ class Products {
   @JoinColumn({ name: "category_id" })
   category: Category;
 
-  @Column()
-  aditional_id: string;
+  @ManyToMany(() => Aditional)
+  @JoinTable({
+    name: "products_aditionals_rel",
+    joinColumns: [{ name: "product_id" }],
+    inverseJoinColumns: [{ name: "aditional_id" }],
+  })
+  aditionals: Aditional[];
 
-  @ManyToOne(() => Aditional)
-  @JoinColumn({ name: "aditional_id" })
-  aditional: Aditional;
+  @ManyToMany(() => Attachment)
+  @JoinTable({
+    name: "attachments",
+    joinColumns: [{ name: "product_id" }],
+    inverseJoinColumns: [{ name: "id" }],
+  })
+  attachment: Attachment;
 
   @UpdateDateColumn()
   created_at: Date;

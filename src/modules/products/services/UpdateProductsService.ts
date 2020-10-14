@@ -3,6 +3,16 @@ import Products from "../entities/Product";
 import ProductsRepository from "../repositories/ProductsRepository";
 import AppError from "../../../errors/AppError";
 
+interface IAditionals {
+  id: string;
+  owner: string;
+  name: string;
+  quantity: number;
+  price: number;
+  created_at: Date;
+  updated_at: Date;
+}
+
 interface IRequest {
   id: string;
   name: string;
@@ -10,6 +20,8 @@ interface IRequest {
   description: string;
   stock: number;
   visible: number;
+  category_id: string;
+  aditionals: IAditionals[];
 }
 
 class UpdateProductsService {
@@ -20,6 +32,8 @@ class UpdateProductsService {
     description,
     stock,
     visible,
+    category_id,
+    aditionals,
   }: IRequest): Promise<Products> {
     const productsRepository = new ProductsRepository();
 
@@ -34,6 +48,8 @@ class UpdateProductsService {
     product.description = description;
     product.stock = stock;
     product.visible = visible;
+    product.category_id = category_id;
+    product.aditionals = aditionals;
 
     return await productsRepository.save(product);
   }
