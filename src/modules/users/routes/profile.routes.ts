@@ -10,5 +10,6 @@ profileRouter.use(ensureAuthenticated);
 
 profileRouter.get("/", profilController.show);
 profileRouter.put("/", profilController.update);
+profileRouter.post("/color", profilController.set);
 
 export default profileRouter;

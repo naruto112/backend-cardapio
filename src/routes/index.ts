@@ -9,6 +9,7 @@ import productsRouter from "../modules/products/routes/products.routes";
 import categoriesRouter from "../modules/categories/routes/categories.routes";
 import aditionalsRouter from "../modules/aditionals/routes/aditionals.routes";
 import attachmentsRouter from "../modules/attachaments/routes/attachments.routes";
+import shopRouter from "../modules/shop/routes/shop.routes";
 
 const routes = Router();
 
@@ -21,5 +22,6 @@ routes.use("/products", productsRouter);
 routes.use("/categories", categoriesRouter);
 routes.use("/aditionals", aditionalsRouter);
 routes.use("/attachments", attachmentsRouter);
+routes.use("/shop", shopRouter);
 
 export default routes;
