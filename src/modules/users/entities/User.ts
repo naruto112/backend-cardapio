@@ -4,9 +4,14 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
 
 import { Exclude, Expose } from "class-transformer";
+
+import Products from "../../products/entities/Product";
+import Categories from "../../categories/entities/Category";
 
 @Entity("users")
 class Users {
@@ -61,6 +66,28 @@ class Users {
 
   @Column()
   shop: string;
+
+  @Column()
+  fantasy_name: string;
+
+  @Column()
+  color: string;
+
+  @ManyToMany(() => Products)
+  @JoinTable({
+    name: "products",
+    joinColumns: [{ name: "owner" }],
+    inverseJoinColumns: [{ name: "id" }],
+  })
+  products: Products;
+
+  @ManyToMany(() => Categories)
+  @JoinTable({
+    name: "categories",
+    joinColumns: [{ name: "owner" }],
+    inverseJoinColumns: [{ name: "id" }],
+  })
+  categories: Categories;
 
   @Expose({ name: "avatar_url" })
   getAvatarUrl(): string {
