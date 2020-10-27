@@ -4,12 +4,11 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
-  JoinColumn,
   JoinTable,
   ManyToMany,
 } from "typeorm";
 
+import Users from "../../users/entities/User";
 import Product from "../../products/entities/Product";
 
 @Entity("menu")

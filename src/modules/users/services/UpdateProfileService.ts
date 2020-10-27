@@ -9,6 +9,7 @@ interface IRequest {
   password?: string;
   old_password?: string;
   first_name: string;
+  phone: string;
   second_name: string;
   city: string;
   uf: string;
@@ -28,6 +29,7 @@ class UpdateProfileService {
     old_password,
     first_name,
     second_name,
+    phone,
     city,
     uf,
     cep,
@@ -55,6 +57,7 @@ class UpdateProfileService {
     user.email = email;
     user.first_name = first_name;
     user.second_name = second_name;
+    user.phone = phone;
     user.city = city;
     user.uf = uf;
     user.cep = cep;
