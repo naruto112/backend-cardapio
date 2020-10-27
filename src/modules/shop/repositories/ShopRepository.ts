@@ -32,7 +32,8 @@ class ShopRepository {
       where: { owner: id, visible: 1 },
       order: { sequence: "ASC" },
     });
-
+    
+    
     return menu;
   }
 
