@@ -17,6 +17,7 @@ interface IRequest {
   neighborhood: string;
   number: string;
   complement: string;
+  term: boolean;
 }
 
 class CreateUserService {
@@ -33,6 +34,7 @@ class CreateUserService {
     neighborhood,
     number,
     complement,
+    term
   }: IRequest): Promise<Users> {
     const userRepository = new UsersRepository();
     const hashProvider = new BCryptHashProvider();
@@ -58,6 +60,7 @@ class CreateUserService {
       neighborhood,
       number,
       complement,
+      term
     });
 
     return user;

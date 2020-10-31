@@ -59,6 +59,11 @@ class MenuRepository {
   public async save(menuData: IMenu): Promise<Menu> {
     return this.ormRepository.save(menuData);
   }
+
+  public async delete(id: string): Promise<boolean> {
+    this.ormRepository.delete(id)
+    return true
+  }
 }
 
 export default MenuRepository;

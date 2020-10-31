@@ -54,8 +54,7 @@ export default class MenuController {
 
   public async delete(request: Request, response: Response): Promise<Response> {
     const disabledMenuService = new DisabledMenuService();
-    const { id } = request.body;
-
+    const { id } = request.params
     const menu = await disabledMenuService.execute({
       id,
     });
@@ -72,6 +71,6 @@ export default class MenuController {
 
     const menu = await changeSequenceMenuService.execute(sequence);
 
-    return response.json(request.body);
+    return response.json(menu);
   }
 }

@@ -8,18 +8,14 @@ interface IRequest {
 }
 
 class DisabledMenuService {
-  public async execute({ id }: IRequest): Promise<Menu> {
+  public async execute({ id }: IRequest): Promise<boolean> {
     const menuRepository = new MenuRepository();
 
-    const menu = await menuRepository.findById(id);
-
-    if (!menu) {
-      throw new AppError("Menu not found", 401);
+    if (!id) {
+      throw new AppError("ID Menu required", 401);
     }
 
-    menu.visible = 0;
-
-    return await menuRepository.save(menu);
+    return await menuRepository.delete(id);
   }
 }
 

@@ -14,6 +14,7 @@ interface ICreateUser {
   neighborhood: string;
   number: string;
   complement: string;
+  term: boolean;
 }
 
 class UsersRepository {
