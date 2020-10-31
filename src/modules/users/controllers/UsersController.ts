@@ -22,6 +22,7 @@ export default class UserController {
       neighborhood,
       number,
       complement,
+      term,
     } = request.body;
 
     const user = await createUserService.execute({
@@ -37,6 +38,7 @@ export default class UserController {
       neighborhood,
       number,
       complement,
+      term
     });
 
     await sendNewUserEmailService.sendMail({

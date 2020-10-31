@@ -13,6 +13,6 @@ menuRouter.get("/:id", menuController.params);
 menuRouter.post("/", menuController.create);
 menuRouter.put("/", menuController.update);
 menuRouter.put("/sequence", menuController.sequence);
-menuRouter.delete("/", menuController.delete);
+menuRouter.delete("/:id", menuController.delete);
 
 export default menuRouter;

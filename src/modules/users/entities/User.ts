@@ -71,6 +71,9 @@ class Users {
   fantasy_name: string;
 
   @Column()
+  term: boolean;
+
+  @Column()
   color: string;
 
   @ManyToMany(() => Products)
