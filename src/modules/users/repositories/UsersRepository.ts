@@ -15,6 +15,7 @@ interface ICreateUser {
   number: string;
   complement: string;
   term: boolean;
+  color: string;
 }
 
 class UsersRepository {
