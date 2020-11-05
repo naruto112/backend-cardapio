@@ -1,4 +1,4 @@
-import { Repository, getRepository } from "typeorm";
+import { Repository, getRepository, DeleteResult } from "typeorm";
 import Category from "../entities/Category";
 
 interface ICategory {
@@ -33,6 +33,11 @@ class CategoriesRepository {
   public async findById(id: string): Promise<Category | undefined> {
     const menu = this.ormRepository.findOne(id);
     return menu;
+  }
+
+  public async delete(id: string): Promise<DeleteResult> {
+    const categoryDelete = this.ormRepository.delete(id);
+    return categoryDelete;
   }
 
   public async save(menuData: ICategory): Promise<Category> {

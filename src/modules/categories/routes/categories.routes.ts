@@ -22,5 +22,6 @@ categoriesRouter.patch(
 );
 categoriesRouter.get("/", categoriesController.show);
 categoriesRouter.put("/", categoriesController.update);
+categoriesRouter.delete("/:id", categoriesController.delete);
 
 export default categoriesRouter;

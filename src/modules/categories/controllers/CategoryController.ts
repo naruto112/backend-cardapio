@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import CreateCategoriesService from "../services/CreateCategoriesService";
 import ShowCategoriesService from "../services/ShowCategoriesService";
 import UpdateCategoriesService from "../services/UpdateCategoriesService";
+import DeleteCategoryService from "../services/DeleteCategoryService";
 import { classToClass } from "class-transformer";
 
 export default class CategoryController {
@@ -39,6 +40,17 @@ export default class CategoryController {
       id,
       name,
     });
+
+    return response.json(category);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const deleteCategoryService = new DeleteCategoryService();
+    const {id } = request.params;
+
+    const category = await deleteCategoryService.execute({
+      id
+    })
 
     return response.json(category);
   }
