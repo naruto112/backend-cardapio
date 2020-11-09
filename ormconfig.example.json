@@ -5,7 +5,7 @@
   "port": 3306,
   "username": "",
   "password": "",
-  "database": "dstudium_cardapiodigital",
+  "database": "",
   "entities": ["./dist/modules/**/entities/*.js"],
   "migrations": ["./dist/database/migrations/*.js"],
   "cli": {
