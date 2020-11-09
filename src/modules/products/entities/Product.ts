@@ -9,6 +9,7 @@ import {
   JoinColumn,
   JoinTable,
   OneToMany,
+  OneToOne,
 } from "typeorm";
 
 import Menu from "../../menu/entities/Menu";

@@ -2,6 +2,7 @@ import Products from "../entities/Product";
 
 import ProductsRepository from "../repositories/ProductsRepository";
 import AppError from "../../../errors/AppError";
+import CategoriesRepository from "../../categories/repositories/CategoriesRepository";
 
 interface IAditionals {
   id: string;
@@ -36,10 +37,17 @@ class UpdateProductsService {
     aditionals,
   }: IRequest): Promise<Products> {
     const productsRepository = new ProductsRepository();
+    const categoriesRepository = new CategoriesRepository();
 
     const product = await productsRepository.findById(id);
 
     if (!product) {
+      throw new AppError("Product not found", 401);
+    }
+
+    const category  = await categoriesRepository.findById(category_id);
+
+    if (!category) {
       throw new AppError("Product not found", 401);
     }
 
@@ -50,6 +58,7 @@ class UpdateProductsService {
     product.visible = visible;
     product.category_id = category_id;
     product.aditionals = aditionals;
+    product.category = category;
 
     return await productsRepository.save(product);
   }

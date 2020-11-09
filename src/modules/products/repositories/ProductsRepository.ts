@@ -57,8 +57,9 @@ class ProductsRepository {
     return product;
   }
 
-  public async save(menuData: IProducts): Promise<Products> {
-    return this.ormRepository.save(menuData);
+  public async save(productData: IProducts): Promise<Products> {
+    const product = await this.ormRepository.save(productData);
+    return product;
   }
 }
 
