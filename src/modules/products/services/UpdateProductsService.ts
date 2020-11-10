@@ -50,6 +50,7 @@ class UpdateProductsService {
     if (!category) {
       throw new AppError("Product not found", 401);
     }
+    
 
     product.name = name;
     product.price = price;
