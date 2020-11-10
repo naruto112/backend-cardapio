@@ -48,7 +48,7 @@ class UpdateProductsService {
     const category  = await categoriesRepository.findById(category_id);
 
     if (!category) {
-      throw new AppError("Product not found", 401);
+      throw new AppError("Category not found", 401);
     }
     
 
