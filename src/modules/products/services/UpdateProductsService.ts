@@ -45,12 +45,13 @@ class UpdateProductsService {
       throw new AppError("Product not found", 401);
     }
 
-    const category  = await categoriesRepository.findById(category_id);
+    const category = await categoriesRepository.findById(category_id);
 
     if (!category) {
       throw new AppError("Category not found", 401);
     }
-    
+
+    product.category = category;
 
     product.name = name;
     product.price = price;
@@ -59,7 +60,6 @@ class UpdateProductsService {
     product.visible = visible;
     product.category_id = category_id;
     product.aditionals = aditionals;
-    product.category = category;
 
     return await productsRepository.save(product);
   }
