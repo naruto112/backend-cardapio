@@ -40,8 +40,8 @@ class CategoriesRepository {
     return categoryDelete;
   }
 
-  public async save(menuData: ICategory): Promise<Category> {
-    return this.ormRepository.save(menuData);
+  public async save(categoryData: ICategory): Promise<Category> {
+    return this.ormRepository.save(categoryData);
   }
 }
 
