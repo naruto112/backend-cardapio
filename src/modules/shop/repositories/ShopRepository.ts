@@ -32,8 +32,7 @@ class ShopRepository {
       where: { owner: id, visible: 1 },
       order: { sequence: "ASC" },
     });
-    
-    
+
     return menu;
   }
 
@@ -45,7 +44,7 @@ class ShopRepository {
        concat('${process.env.APP_STORAGE_URL}/files/', url) as url 
        FROM users
        JOIN categories on users.id = categories.owner
-       JOIN attachments on categories.id = attachments.category_id
+       LEFT JOIN attachments on categories.id = attachments.category_id
        WHERE shop = '${name}'`
     );
 
