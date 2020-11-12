@@ -8,5 +8,6 @@ profileRouter.get("/categories/:name", shopController.showCategories);
 profileRouter.get("/menu/:name", shopController.showMenu);
 profileRouter.post("/products", shopController.showProducts);
 profileRouter.get("/:name", shopController.showShop);
+profileRouter.post("/menufilter/:name", shopController.showMenuFilterCategory);
 
 export default profileRouter;

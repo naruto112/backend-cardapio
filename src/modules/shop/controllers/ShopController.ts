@@ -3,6 +3,7 @@ import ShowCategoriesService from "../services/ShowCategoriesService";
 import ShowMenuService from "../services/ShowMenuService";
 import ShowProductsService from "../services/ShowProductsService";
 import ShowShopService from "../services/ShowShopService";
+import ShowFilterCategoryService from "../services/ShowFilterCategoryService";
 import { classToClass } from "class-transformer";
 
 export default class ShopController {
@@ -31,6 +32,20 @@ export default class ShopController {
     const { name } = request.params;
     const categories = await showCategoriesService.execute({ name });
     return response.json(categories);
+  }
+
+  public async showMenuFilterCategory(
+    request: Request,
+    response: Response
+  ): Promise<Response> {
+    const showFilterCategoryService = new ShowFilterCategoryService();
+    const { name } = request.params;
+    const { category_id } = request.body;
+    const products = await showFilterCategoryService.execute({
+      name,
+      category_id,
+    });
+    return response.json(classToClass(products));
   }
 
   public async showProducts(request: Request, response: Response) {
