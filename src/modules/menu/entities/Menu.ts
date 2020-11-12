@@ -8,7 +8,6 @@ import {
   ManyToMany,
 } from "typeorm";
 
-import Users from "../../users/entities/User";
 import Product from "../../products/entities/Product";
 
 @Entity("menu")

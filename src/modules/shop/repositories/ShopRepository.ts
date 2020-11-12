@@ -2,6 +2,7 @@ import { Repository, getRepository } from "typeorm";
 import Users from "../../users/entities/User";
 import Menu from "../../menu/entities/Menu";
 import Product from "../../products/entities/Product";
+import Products from "../../products/entities/Product";
 
 class ShopRepository {
   private ormRepositoryUser: Repository<Users>;
@@ -20,6 +21,25 @@ class ShopRepository {
     });
 
     return shop;
+  }
+
+  public async finByMenuFilterCategory(
+    name: string,
+    category_id: string
+  ): Promise<Products[]> {
+    const [{ id }] = await this.ormRepositoryUser.find({
+      where: { shop: name },
+    });
+
+    const products = await this.ormRepositoryProduct.find({
+      relations: ["attachment"],
+      where: {
+        owner: id,
+        category_id,
+      },
+    });
+
+    return products;
   }
 
   public async findByMenu(name: string): Promise<Menu[]> {
